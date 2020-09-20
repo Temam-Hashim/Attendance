@@ -12,13 +12,13 @@
     $pass = 'GUc9FvRiQg';
     $db = 'eeLjT0Y51U';
     $charset = 'utf8mb4';
-    
+
     // dsn = data set name but you can use any variable
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
     try{
       $pdo = new PDO($dsn,$user,$pass);
       $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-      echo 'database connected on 127.0.0.1';
+      include('includes/success_msg.php');
 
 
     }catch(PDOException $e){
