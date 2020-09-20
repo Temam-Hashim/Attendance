@@ -35,9 +35,13 @@
     <p class="card-text">Email Address:<?php echo $_POST['email']?></p>
     <p class="card-text">User Password:<?php echo $_POST['password']?></p>
     <p class="card-text">Phone Number:<?php echo $_POST['contact']?></p>
+<br>
+  <div class="card-footer">
+  <a href="index.php" class="btn btn-primary">Home</a>
+  <a href="edit.php?id=<?php echo $result['attendee_id']?>" class="btn btn-warning">Edit</a>
+  <a href="viewRecords.php" class="btn btn-info">View All Records</a>
 
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+  </div>
   </div>
 </div>
 
