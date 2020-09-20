@@ -67,7 +67,8 @@
   
     
   
-    <button type="submit" onclick="return confirm('are you sure you want to make change to this record?')" class="btn btn-primary btn-block" id="submit" name="saveChange" >Save Change</button>
+    <button type="submit" width="80" onclick="return confirm('are you sure you want to make change to this record?')" class="btn btn-primary " id="submit" name="saveChange" >Save Change</button>
+    <button class="btn btn-warning" href="viewRecords.php">Go Back</button>
   </form>
   <?php  } 
 
