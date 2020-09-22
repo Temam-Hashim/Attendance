@@ -2,6 +2,8 @@
   $title = "Success";
   require_once 'includes/header.php';
   require_once 'db/conn.php';
+  require_once 'sendEmail.php';
+
   if(isset($_POST['submit'])){
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
@@ -13,13 +15,13 @@
 
 
     $isSuccess = $crud->insert($fname,$lname,$dob,$email,$pass,$contact,$speciality);
+    $specialtyName = $crud->getSpecialtyById($speciality);
     if($isSuccess){
+      myPHPMailer::sendEMail($email); 
       include('includes/success_msg.php');
-     
     }
     else{
       include('includes/error_msg.php');
-      header('Loction:viewRecords.php');
     }
 
   }
@@ -29,7 +31,7 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><?php echo $_POST['fname'].' '.$_POST['lname'];?></h5>
-    <h6 class="card-subtitle mb-2 text-muted"><?php echo $_POST['speciality']?></h6>
+    <h6 class="card-subtitle mb-2 text-muted"><?php echo $specialtyName['specialty_name']?></h6>
  
     <p class="card-text">Date Of Birth:<?php echo $_POST['dob']?></p>
     <p class="card-text">Email Address:<?php echo $_POST['email']?></p>
@@ -42,7 +44,7 @@
 <div class="card-footer">
   <a href="index.php" class="btn btn-primary">Home</a>
   <a href="edit.php?id=<?php echo $result['attendee_id']?>" class="btn btn-warning">Edit</a>
-  <a href="viewRecords.php" class="btn btn-info">View All Records</a>
+  <a href="viewRecords.php" class="btn btn-info">View Records</a>
 </div>
 
 <br><br><br>

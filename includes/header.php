@@ -1,4 +1,7 @@
+<?php
+include 'session.php';
 
+?>
 <!DOCTYPE html>
 <html lang="">
   <head>
@@ -32,8 +35,8 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse bg-info">
     <ul class="nav navbar-nav navbar-dark">
-      <li class="active"><a href="index.php">Home</a></li>
-      <li><a href="viewRecords.php">View Attendee</a></li>
+      <li class="text-primary" style="color:green;font-size:16px"><a href="index.php">Home</a></li>
+      <li style="color:green;font-size:16px"><a href="viewRecords.php">View Attendee</a></li>
     </ul>
     <form class="navbar-form navbar-left" role="search">
       <div class="form-group">
@@ -41,6 +44,7 @@
       </div>
       <button type="submit" class="btn btn-default" name="searchbtn">Search</button>
     </form>
+
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#">Contact</a></li>
       <li class="dropdown">
@@ -52,7 +56,21 @@
           <li><a href="#">Page4</a></li>
         </ul>
       </li>
+      <?php
+        if(!isset($_SESSION['user_id'])){
+      
+      ?>
+    <li><a href="login.php">Login</a></li>
+    <?php }
+    else{
+
+    ?>
+     <li><a href="#"> Hello <?php echo($_SESSION['username']) ?></a></li>
+     <li><a href="logout.php">Logout</a></li>
+   
+    <?php }?>
     </ul>
+
   </div><!-- /.navbar-collapse -->
 </nav>
 <br><br>

@@ -1,6 +1,7 @@
 <?php
   $title = "View Records";
   require_once 'includes/header.php';
+  require_once 'includes/auth_check.php';
   require_once 'db/conn.php';
 
   // get attendee by id
@@ -31,7 +32,7 @@
   <div class="card-footer">
   <a href="index.php" class="btn btn-primary">Home</a>
   <a href="edit.php?id=<?php echo $result['attendee_id']?>" class="btn btn-warning">Edit</a>
-  <a href="viewRecords.php" class="btn btn-info">View All Records</a>
+  <a href="login.php" class="btn btn-info">View Records</a>
 
   </div>
 </div>
