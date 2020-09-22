@@ -1,17 +1,17 @@
 <?php
 //LOCAL CONNECTION
-    $host = '127.0.0.1';
-    $user = 'root';
-    $pass = '';
-    $db = 'php_training';
-    $charset = 'utf8mb4';
-
-// REMOTE CONNECTION
-    // $host = 'remotemysql.com';
-    // $user = 'eeLjT0Y51U';
-    // $pass = 'GUc9FvRiQg';
-    // $db = 'eeLjT0Y51U';
+    // $host = '127.0.0.1';
+    // $user = 'root';
+    // $pass = '';
+    // $db = 'php_training';
     // $charset = 'utf8mb4';
+
+//REMOTE CONNECTION
+    $host = 'remotemysql.com';
+    $user = 'eeLjT0Y51U';
+    $pass = 'GUc9FvRiQg';
+    $db = 'eeLjT0Y51U';
+    $charset = 'utf8mb4';
 
     // dsn = data set name but you can use any variable
     $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
