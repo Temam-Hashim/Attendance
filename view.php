@@ -19,7 +19,7 @@
   <div class="card-body">
   <h5 class="card-title"><?php echo $result['firstname'].' '.$result['lastname'];?></h5>
     <h6 class="card-subtitle mb-2 text-muted"><?php echo $result['specialty_name']?></h6>
-    <img class="card-img-top rounded" src="<?php echo empty($result['profile']) ? "upload/blank.png" : $result['profile']  ?>" alt="<?php echo $result['firstname'] ?>">
+    <img height="auto" class="card-img-top rounded" src="<?php echo empty($result['profile']) ? "upload/blank.png" : $result['profile']  ?>" alt="<?php echo $result['firstname'] ?>">
     <hr color="blue">
 
  

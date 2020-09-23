@@ -13,7 +13,16 @@
       $specialty_id=$_POST['specialty'];
       $contact=$_POST['contact'];
       
-      $changeSaved = $crud->update($id,$firstname,$lastname,$dob,$email,$pass,$specialty_id,$contact);
+      
+    // upload file
+    $origional_file = $_FILES['profile']['tmp_name'];
+    $ext = pathinfo($_FILES['profile']['name'],PATHINFO_EXTENSION);
+    $target_dir = 'upload/';
+    // $destination = $target_dir.basename($_FILES['profile']['name']);
+    $destination = $target_dir.$contact.'.'.$ext;
+    move_uploaded_file($origional_file,$destination);
+      
+      $changeSaved = $crud->update($id,$firstname,$lastname,$dob,$email,$pass,$specialty_id,$contact,$destination);
 
     }
     if($changeSaved){

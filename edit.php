@@ -22,7 +22,7 @@
 
   <h1 class="text-center text-primary">EDIT RECORDS </h1>
   
-  <form action="updateSuccess.php" method="POST" role="form">
+  <form action="updateSuccess.php" method="POST" role="form" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $attendee['attendee_id'];?>"/>
     <legend class="text-center text-success">PHP Update</legend>
   
@@ -64,6 +64,13 @@
       <label for="contact">Contact Number</label>
       <input type="text"  value="<?php echo $attendee['contact']?>" class="form-control" id="contact" name="contact">
       <small id="contact" class="form-text text-muted">we will never share your Number with any one</small>
+    </div>
+
+    <label for="profile" class="pro">Upload Profile Picture</label><span color="blue"> *</span><br>
+    <div class="custom-file">
+        <input type="file" accept="image/*" value="<?php echo $attendee['profile']?>"  class="custom-file-input pro" id="profile" name="profile">
+        <label class="custom-file-label pro" for="profile" >Choose file</label>
+        <small id="profile" class="form-text text-warning">profile picture is optional</small>
     </div>
   
     
