@@ -6,9 +6,9 @@
         $this->db = $conn;
       }
 
-      public function insert($fname,$lname,$dob,$email,$pass,$contact,$specialty_id){
+      public function insert($fname,$lname,$dob,$email,$pass,$contact,$specialty_id,$profile){
         try{
-          $sql = "INSERT INTO `attend`(`firstname`, `lastname`, `dob`, `email`, `pass`, `contact`, `specialty_id`) VALUES (:fname,:lname,:dob,:email,:pass,:contact,:specialty)";
+          $sql = "INSERT INTO `attend`(`firstname`, `lastname`, `dob`, `email`, `pass`, `contact`, `specialty_id`,`profile`) VALUES (:fname,:lname,:dob,:email,:pass,:contact,:specialty,:profile)";
           $stmt = $this->db->prepare($sql);
           // bind each value
          
@@ -19,6 +19,7 @@
           $stmt->bindparam(':pass',$pass);
           $stmt->bindparam(':contact',$contact);
           $stmt->bindparam(':specialty',$specialty_id);
+          $stmt->bindparam(':profile',$profile);
 
           // excute the query
           $stmt->execute();
@@ -33,10 +34,10 @@
 
       }
 
-    public function update($id,$firstname,$lastname,$dob,$email,$pass,$specialty_id,$contact){
+    public function update($id,$firstname,$lastname,$dob,$email,$pass,$specialty_id,$contact,$profile){
       try{
         $sql = "UPDATE `attend` set firstname=:firstname,lastname=:lastname,dob=:dob,email=:email,
-                pass=:pass,specialty_id=:specialty_id,contact=:contact WHERE attendee_id = :id";
+                pass=:pass,specialty_id=:specialty_id,contact=:contact,profile=:profile WHERE attendee_id = :id";
         $stmt = $this->db->prepare($sql);
 
         $stmt->bindparam(':id',$id);
@@ -47,6 +48,7 @@
         $stmt->bindparam(':pass',$pass);
         $stmt->bindparam(':specialty_id',$specialty_id);
         $stmt->bindparam(':contact',$contact);
+        $stmt->bindparam(':profile',$profile);
 
         $stmt->execute();
         return true;

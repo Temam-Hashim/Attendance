@@ -12,9 +12,17 @@
     $pass = $_POST['password'];
     $contact = $_POST['contact'];
     $speciality = $_POST['speciality'];
+  
 
+    // upload file
+    $origional_file = $_FILES['profile']['tmp_name'];
+    $ext =pathinfo($_FILES['profile']['name'],PATHINFO_EXTENSION);
+    $target_dir = 'upload/';
+    // $destination = $target_dir.basename($_FILES['profile']['name']);
+    $destination = $target_dir.$contact.'.'.$ext;
+    move_uploaded_file($origional_file,$destination);
 
-    $isSuccess = $crud->insert($fname,$lname,$dob,$email,$pass,$contact,$speciality);
+    $isSuccess = $crud->insert($fname,$lname,$dob,$email,$pass,$contact,$speciality,$destination);
     $specialtyName = $crud->getSpecialtyById($speciality);
     if($isSuccess){
       myPHPMailer::sendEMail($email); 
@@ -30,8 +38,11 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title"><?php echo $_POST['fname'].' '.$_POST['lname'];?></h5>
+  <h5 class="card-title"><?php echo $_POST['fname'].' '.$_POST['lname'];?></h5>
     <h6 class="card-subtitle mb-2 text-muted"><?php echo $specialtyName['specialty_name']?></h6>
+    <img class="card-img-top rounded" src="<?php echo $destination ?>" alt="<?php echo $fname ?>">
+    <hr color="blue">
+
  
     <p class="card-text">Date Of Birth:<?php echo $_POST['dob']?></p>
     <p class="card-text">Email Address:<?php echo $_POST['email']?></p>

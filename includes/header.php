@@ -5,72 +5,99 @@ include 'session.php';
 <!DOCTYPE html>
 <html lang="">
   <head>
+  <style>
+    .myicon{
+      width:200px;
+      color:pink;
+      border:20px solid ;
+      border-radius:3px;
+    }
+    .myicon:hover{
+      color:skyblue;
+      border:25px solid ;
+      border-radius:5px;
+
+    }
+
+  </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Attendance -<?php echo $title?></title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <!-- custom css -->
     <link rel="stylesheet" href = "css/site.css" />
   </head>
   <body>
-  <div class="container">
-<nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="index.php">PHP CONF.</a>
-  </div>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse bg-info">
-    <ul class="nav navbar-nav navbar-dark">
-      <li class="text-primary" style="color:green;font-size:16px"><a href="index.php">Home</a></li>
-      <li style="color:green;font-size:16px"><a href="viewRecords.php">View Attendee</a></li>
-    </ul>
-    <form class="navbar-form navbar-left" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" name="searchval" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default" name="searchbtn">Search</button>
-    </form>
+  <nav class="navbar navbar-expand-lg navbar-danger bg-success">
+  <a class="navbar-brand" href="index.php">PHPLOGO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon myicon"></span>
+  </button>
 
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">Contact</a></li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Page<b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page1</a></li>
-          <li><a href="#">Page2</a></li>
-          <li><a href="#">Page3</a></li>
-          <li><a href="#">Page4</a></li>
-        </ul>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
-      <?php
+      <li class="nav-item">
+        <a class="nav-link" href="viewRecords.php">View Attendee</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Training
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">PHP</a>
+          <a class="dropdown-item" href="#">JAVA</a>
+          <a class="dropdown-item" href="#">PYTHON</a>
+          <div class="dropdown-divider">TEACH</div>
+          <a class="dropdown-item" href="#">MATHS</a>
+          <a class="dropdown-item" href="#">PHYSICS</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <?php
         if(!isset($_SESSION['user_id'])){
       
       ?>
-    <li><a href="login.php">Login</a></li>
+    <li class="nav-item">
+      </li><a class="nav-link" href="login.php">Login</a>
+    </li>
     <?php }
     else{
 
     ?>
-     <li><a href="#"> Hello <?php echo($_SESSION['username']) ?></a></li>
-     <li><a href="logout.php">Logout</a></li>
+     <li class="nav-item">
+     </li><a class="nav-link" href="#"> Hello <?php echo($_SESSION['username']) ?></a>
+      </li>
+     <li class="nav-item">
+     </li><a class="nav-link" href="logout.php">Logout</a>
+    </li>
    
     <?php }?>
     </ul>
 
-  </div><!-- /.navbar-collapse -->
+  </div>
 </nav>
-<br><br>
+
+
+<div class="container">
+
+
