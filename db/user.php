@@ -38,7 +38,7 @@
     
                 
             $sql = "SELECT * FROM `user` WHERE username=:username AND pass=:pass";
-            $stmt=$this->db->prepare($sql);
+            $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':username',$username);
             $stmt->bindparam(':pass',$pass);
             $stmt->execute();
@@ -75,7 +75,24 @@
       }
 
     }
+    public function updatePassword($username,$pass){
+      try{
+        
+        $sql = "UPDATE `user` set pass=:pass where username=:username";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindparam(':username',$username);
+        $stmt->bindparam(':pass',$pass);
+        $stmt->execute();
+        return true;
 
 
+      }
+      catch(PDOException $e){
+        echo $e->getMessage();
+        return false;
+
+      }
+
+    }
 }
 ?>

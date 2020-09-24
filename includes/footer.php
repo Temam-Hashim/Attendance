@@ -1,10 +1,20 @@
    <!-- close container -->
-</div>
-  <div id="footer" class=" text-center card border-dark text-dark" style="background:lightblue;max-width: auto;">
+<style>
+  footer {
+    clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: -200px;
+    }
+
+</style>
+   </div>
+  <div id="footer" class="footer text-center card border-dark text-dark" style="background:lightblue;max-width: auto;">
    <p class="text-center">
     <?php echo "<h4 style='color:blue;'>Copyright &copy PHP Training Registration".date('Y')."</h4>";?>
    </p> 
   </div>
+
  
 
     <!-- jQuery -->
@@ -29,3 +39,4 @@
 
   </body>
 </html>
+

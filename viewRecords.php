@@ -9,6 +9,12 @@
 
 
 ?>
+<style>
+  tbody:hover{
+    background-color:gray;
+    cursor:pointer;
+  }
+</style>
 
 <table class="table table-hover table-striped table-bordered table-sm">
   <thead class="thead-dark">
@@ -22,7 +28,6 @@
   </thead>
   <?php 
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
-
 
     ?>
     <tbody>
@@ -46,6 +51,6 @@
 </table>
 
 
-<br><br><br>
+<br><br><br><br><br><br><br><br>
 
 <?php require_once 'includes/footer.php'?>

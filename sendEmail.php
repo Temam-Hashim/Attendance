@@ -3,7 +3,7 @@
   use PHPMailer\PHPMailer\PHPMailer;
 
   class myPHPMailer{
-    function sendEmail($to){
+    public static function sendEmail($to){
       $mail = new PHPMailer();
       $mail->isSMTP();
       $mail->Host = 'smtp.mailtrap.io';

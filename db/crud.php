@@ -139,9 +139,93 @@
         }
 
       }
+      // contact data insertion
+      public function insertContact($name,$email,$subject,$message,$date){
+        try{
+          $sql = "INSERT INTO `contact`(`name`, `email`, `subject`, `message`,`date`) VALUES (:name,:email,:subject,:message,:date)";
+          $stmt = $this->db->prepare($sql);
+          $stmt->bindparam(':name',$name);
+          $stmt->bindparam(':email',$email);
+          $stmt->bindparam(':subject',$subject);
+          $stmt->bindparam(':message',$message);
+          $stmt->bindparam(':date',$date);
+          $stmt->execute();
+          return true;
+        }
+    catch(PDOException $e){
+      echo $e->getMessage();
+      return false;
+      }
+
+    }
+    public function getContact(){
+      try{
+        $sql = "SELECT * FROM `contact` ORDER BY `date`";
+        $result = $this->db->query($sql);
+        return $result;
+
+      }
+      catch(PDOException $e){
+        echo $e->getMessage();
+        return false;
+        }
+  
+
+    }
+    public function countContact(){
+      try{
+
+    
+        $sql = "SELECT count(*) AS num FROM `contact`";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        //fetch into result
+        $result = $stmt->fetch();
+        // return the result
+        return $result;
+      }
+      catch(PDOException $e){
+        echo $e->getMessage();
+        return false;
+
+      }
+
+    }
+    public function deleteMessage($id){
+      try{
+        $sql = "DELETE FROM `contact` where id=:id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindparam(':id',$id);
+        $stmt->execute();
+        return true;
+    }
+      catch(PDOException $e){
+        echo $e->getMessage();
+        return false;
+
+    }
+
+    }
+    public function getContactById($id){
+      try{
+
+        $sql = "SELECT * FROM `contact` WHERE id=:id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindparam(':id',$id);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result;
+      }
+      catch(PDOException $e){
+        echo $e->getMessage();
+        return false;
+
+      }
+
+    }
+
       public function search($searchVal){
         try{
-
           $sql = "SELECT * FROM `attend` WHERE `firstname` OR `lastname`  LIKE '%$searchVal%'";
           $result = $this->db->query($sql);
           return $result;

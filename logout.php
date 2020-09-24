@@ -3,5 +3,5 @@
 include('includes/session.php');
 //after the logout button clicked destroy the session.
 session_destroy();
-header('Location: index.php');
+header('Location: login.php');
 ?>
